@@ -8,9 +8,7 @@ import java.util.List;
 
 import static org.openqa.selenium.By.cssSelector;
 
-/**
- * Created by jconcessao on 5/24/2017.
- */
+
 public class HomePage {
     public WebDriver driver;
     public WebDriverWait wait;
@@ -25,7 +23,7 @@ public class HomePage {
     private final By sortBy = By.cssSelector("div.sort button");
     private final By searchResults = By.cssSelector("ul.serp-result");
     private final By fixedTable = By.cssSelector("table.fixed-table");
-    private final By BedCount=By.xpath("//*[@id='property-facts']/table/tbody/tr[4]/td");
+    private final By BedCount = By.xpath("//*[@id='property-facts']/table/tbody/tr[4]/td");
 
 
     public HomePage(WebDriver driver) {
@@ -97,16 +95,15 @@ public class HomePage {
         selectElement(option);
 
 
-
     }
 
-   public void selectLastProperty(){
+    public void selectLastProperty() {
 
-       int max=driver.findElements(By.xpath("//*[@id=\"serp\"]/ul/li")).size();
-       int row=max-1;
+        int max = driver.findElements(By.xpath("//*[@id=\"serp\"]/ul/li")).size();
+        int row = max - 1;
 
-       String xpath = "//*[@id=\"serp\"]/ul/li[" + row + "]/div[3]/h2/a";
-       driver.findElement(By.xpath(xpath)).click();
+        String xpath = "//*[@id=\"serp\"]/ul/li[" + row + "]/div[3]/h2/a";
+        driver.findElement(By.xpath(xpath)).click();
 
     }
 
@@ -127,9 +124,8 @@ public class HomePage {
 
         if (driver.getTitle().contains("propertyfinder.qa")) {
             return driver.findElement(BedCount).getText();
-        }
-         else if  (driver.getTitle().contains("propertyfinder.ae")) {
-                return driver.findElement(By.xpath("//*[@id='property-facts']/table/tbody/tr[5]/td")).getText();
+        } else if (driver.getTitle().contains("propertyfinder.ae")) {
+            return driver.findElement(By.xpath("//*[@id='property-facts']/table/tbody/tr[5]/td")).getText();
         }
         return null;
     }
